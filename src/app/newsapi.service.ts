@@ -9,6 +9,7 @@ export class NewsapiService {
   private apiKey:string;
   private country;
   public pageSize:number;
+  public currentPage = 1;
   constructor(private fetch:HttpClient) {
     this.url = environment.newsApiURL;
     this.apiKey = environment.newsApiKey;
@@ -16,8 +17,8 @@ export class NewsapiService {
     this.pageSize = environment.pageSize || 10;
    }
 
-   fetchNewsItems(genre:string,page:Number = 1, pageSize:Number = this.pageSize || 10){
+   fetchNewsItems(genre:string,page:Number = this.currentPage, pageSize:Number = this.pageSize || 10){
      let endpoint = `${this.url}/top-headlines?country=${this.country}&category=${genre || 'general'}${page?('&pages='+page):''}${pageSize?'&pageSize='+pageSize:''}&apiKey=${this.apiKey}`;
-     return this.fetch.get<{status:string, articles?:[], totalResults:Number}>(endpoint)
+     return this.fetch.get<{status:string, articles:[], totalResults:Number}>(endpoint);
    }
 }

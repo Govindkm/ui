@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -33,7 +34,8 @@ import { CapitalizePipe } from './pipes/capitalize.pipe';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    InfiniteScrollModule
   ],
   providers: [Title],
   bootstrap: [AppComponent]

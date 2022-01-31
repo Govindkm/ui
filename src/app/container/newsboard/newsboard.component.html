@@ -8,6 +8,10 @@
     justify-content: center;
     flex-wrap: wrap;
   "
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="loadMore()"
 >
   <app-news-card *ngFor="let ele of articles" [article]="ele"></app-news-card>
 </div>
