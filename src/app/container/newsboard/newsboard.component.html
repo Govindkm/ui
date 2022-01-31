@@ -8,9 +8,13 @@
     justify-content: center;
     flex-wrap: wrap;
   "
-  *ngIf="articles.length != 0; else spinner"
 >
   <app-news-card *ngFor="let ele of articles" [article]="ele"></app-news-card>
 </div>
 
-<ng-template #spinner> <app-spinner></app-spinner> </ng-template>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  [type]="spinnerType"
+></ngx-spinner>

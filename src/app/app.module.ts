@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,7 +15,6 @@ import { RegisterComponent } from './container/register/register.component';
 import { NewsCardComponent } from './container/newsboard/news-card/news-card.component';
 import { NewsboardComponent } from './container/newsboard/newsboard.component';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
-import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -23,13 +25,15 @@ import { SpinnerComponent } from './spinner/spinner.component';
     RegisterComponent,
     NewsboardComponent,
     NewsCardComponent,
-    CapitalizePipe,
-    SpinnerComponent
+    CapitalizePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    NgxSpinnerModule
   ],
   providers: [Title],
   bootstrap: [AppComponent]
