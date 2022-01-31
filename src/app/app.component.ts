@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'ui';
+  public constructor(public titleService:Title){}
+  public setTitle(title:string){
+    this.titleService.setTitle(title);
+  }
 }

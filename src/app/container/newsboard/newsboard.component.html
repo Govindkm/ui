@@ -1,0 +1,16 @@
+<h2 style="text-align: center">
+  {{ "top " + genre + " headlines" | capitalize }}
+</h2>
+<div
+  style="
+    margin-top: 5vh;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  "
+  *ngIf="articles.length != 0; else spinner"
+>
+  <app-news-card *ngFor="let ele of articles" [article]="ele"></app-news-card>
+</div>
+
+<ng-template #spinner> <app-spinner></app-spinner> </ng-template>
