@@ -18,7 +18,7 @@ export class NewsapiService {
    }
 
    fetchNewsItems(genre:string,page:Number = this.currentPage, pageSize:Number = this.pageSize || 10){
-     let endpoint = `${this.url}/top-headlines?country=${this.country}&category=${genre || 'general'}${page?('&pages='+page):''}${pageSize?'&pageSize='+pageSize:''}&apiKey=${this.apiKey}`;
+     let endpoint = `${this.url}/top-headlines?country=${this.country}&category=${genre || 'general'}${page?('&page='+page):''}${pageSize?'&pageSize='+pageSize:''}&apiKey=${this.apiKey}`;
      return this.fetch.get<{status:string, articles:[], totalResults:Number}>(endpoint);
    }
 }

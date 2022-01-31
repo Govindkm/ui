@@ -25,7 +25,7 @@ spinnerType:string;
     }
     else{
       this.spinnerService.show();
-      this.newsApiService.fetchNewsItems(this.genre, ++this.newsApiService.currentPage).subscribe((res)=>{
+      this.newsApiService.fetchNewsItems(this.genre, ++(this.newsApiService.currentPage)).subscribe((res)=>{
         if(res.status == 'ok'){
           console.log(res.articles);
           this.articles.push(...(res.articles));
