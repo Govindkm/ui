@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
@@ -16,6 +16,7 @@ import { RegisterComponent } from './container/register/register.component';
 import { NewsCardComponent } from './container/newsboard/news-card/news-card.component';
 import { NewsboardComponent } from './container/newsboard/newsboard.component';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
+import { JwtInterceptorService } from './jwt-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -35,9 +36,14 @@ import { CapitalizePipe } from './pipes/capitalize.pipe';
     FormsModule,
     BrowserAnimationsModule,
     NgxSpinnerModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    ReactiveFormsModule
   ],
-  providers: [Title],
+  providers: [Title, {
+    provide: HTTP_INTERCEPTORS, 
+    useClass: JwtInterceptorService, 
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

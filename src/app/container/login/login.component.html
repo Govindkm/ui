@@ -11,7 +11,24 @@
               <span class="input-group-text bg-primary"
                 ><i class="bi bi-person-plus-fill text-white"></i
               ></span>
-              <input type="text" class="form-control" placeholder="Username" />
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Username"
+                [formControl]="username"
+              />
+            </div>
+            <div
+              *ngIf="username.errors?.['required'] && username.touched"
+              class="alert alert-danger"
+            >
+              Name is required.
+            </div>
+            <div
+              *ngIf="username.errors?.['minlength'] && username.touched"
+              class="alert alert-danger"
+            >
+              Name must be at least 5 characters.
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text bg-primary"
@@ -20,8 +37,22 @@
               <input
                 type="password"
                 class="form-control"
+                [formControl]="password"
                 placeholder="password"
               />
+            </div>
+            <div
+              *ngIf="password.errors?.['required'] && password.touched"
+              class="alert alert-danger"
+            >
+              Password is required.
+            </div>
+            <div
+              *ngIf="password.errors?.['pattern'] && password.touched"
+              class="alert alert-danger"
+            >
+              Password must be minimum eight characters, at least one uppercase
+              letter, one lowercase letter, one number and one special character
             </div>
             <div class="form-check">
               <input
@@ -34,12 +65,18 @@
                 Remember Me
               </label>
             </div>
-            <button class="btn btn-primary text-center mt-2" type="submit">
+            <button
+              class="btn btn-primary text-center mt-2"
+              [disabled]="username.invalid || password.invalid"
+              (click)="logIn()"
+            >
               Login
             </button>
             <p class="text-center mt-5">
               Don't have an account?
-              <span class="text-primary">Sign Up</span>
+              <span class="text-primary" [routerLink]="['/register']"
+                >Sign Up</span
+              >
             </p>
             <p class="text-center text-primary">Forgot your password?</p>
           </div>

@@ -43,7 +43,7 @@ spinnerType:string;
   ngOnInit(): void {
     this.route.params.subscribe((param)=>{
       this.spinnerService.show();
-      this.genre=param['genre'].slice(1);
+      this.genre=param['genre'];
       this.newsApiService.fetchNewsItems(this.genre).subscribe((res)=>{
         if(res.status == 'ok'){
           this.articles=res.articles;
